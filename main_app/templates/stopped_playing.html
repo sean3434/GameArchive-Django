@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Stopped Playing
+{% endblock %}
+
+{% block content %}
+    {% for game in games %}
+        <div class="detail__cover_art">
+            <img src="{{game.cover_art}}" alt="{{game.name}}" />
+        </div>
+        <div class="detail__title">
+            <h1 class="titlee">{{game.title}}</h1>
+        </div>
+        <div class="detail__release_date">
+            <h1 class="release_date">{{game.release_date}}</h1>
+        </div>
+        <div class="detail__developer">
+            <h1 class="developer">{{game.developer}}</h1>
+        </div>
+        <div class="detail__rating">
+            <h1 class="rating">{{game.rating}}</h1>
+        </div>
+        <div class="detail__platform">
+            <h1 class="platform">{{game.platform}}</h1>
+        </div>
+        <div class="detail__genre">
+            <h1 class="genre">{{game.genre}}</h1>
+        </div>
+        <div class="detail__description">
+            <h1 class="description">{{game.description}}</h1>
+        </div>
+        <div class="detail__add_to_list">
+            <h1 class="add_to_list">{{game.add_to_list}}</h1>
+        </div>
+    {% endfor %}
+{% endblock %}
