@@ -5,13 +5,22 @@ Search Page
 {% endblock %}
 
 {% block content %}
+
+<h2>Search Game</h2>
+    <form action='' method='get'>
+        <input type='text' name='gametitle'>
+        <button type='submit' value='Search'>Search</button>
+    </form>
+    <hr>
+
     {% for i in results %}
-        <img src='{{ i.background_image }}' alt='cover art'>
+        <img src='{{ i.background_image }}' alt='cover art' height=200px width=200px>
         <div>{{ i.name }}</div>
         <div>Rating: {{ i.metacritic }}</div>
         <div>Released on {{ i.released }}</div>
-        {% for i in platforms %}
-        <div>{{ i.platform.name }}</div>
+        {% for j in i.platforms %}
+            {% include 'comma.html' %}{{ j.platform.name }}
         {% endfor %}
+        <hr>
     {% endfor %}
 {% endblock %}
