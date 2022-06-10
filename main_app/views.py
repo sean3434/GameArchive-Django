@@ -15,8 +15,17 @@ from .models import Game
 
 API_KEY = '2b3cce12bb324a6c91904de7b3790e97'
 
-def search(request):
-    url = f'https://api.rawg.io/api/games?search={}&key={API_KEY}'
+def Search(request):
+    url = f'https://api.rawg.io/api/games?search=octopath%20traveler&key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+    results = data['results']
+
+    context = {
+        'results' : results
+    }
+    return render(request, 'search.html', context)
 
 class Landing(TemplateView):
     template_name = "landing.html"

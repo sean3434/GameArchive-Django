@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Search Page
+{% endblock %}
+
+{% block content %}
+    {% for i in results %}
+        <img src='{{ i.background_image }}' alt='cover art'>
+        <div>{{ i.name }}</div>
+        <div>Rating: {{ i.metacritic }}</div>
+        <div>Released on {{ i.released }}</div>
+        {% for i in platforms %}
+        <div>{{ i.platform.name }}</div>
+        {% endfor %}
+    {% endfor %}
+{% endblock %}
