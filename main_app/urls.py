@@ -10,4 +10,5 @@ urlpatterns = [
     path('library/currentlyplaying/', views.CurrentlyPlaying.as_view(), name="currently_playing"),
     path('library/finishedplaying/', views.FinishedPlaying.as_view(), name="finished_playing"),
     path('library/wanttoplay/', views.WantToPlay.as_view(), name="want_to_play"),
+    path('accounts/signup/', views.Signup.as_view(), name="signup")
 ]
