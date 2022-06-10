@@ -28,6 +28,18 @@ def Search(request):
     }
     return render(request, 'search.html', context)
 
+def Details(request):
+    slug = request.GET.get('slug')
+    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+
+    context = {
+        'data' : data
+    }
+    return render(request, 'details.html', context)
+
 class Landing(TemplateView):
     template_name = "landing.html"
 

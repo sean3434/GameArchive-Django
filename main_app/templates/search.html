@@ -8,7 +8,7 @@ Search Page
 
 <h2>Search Game</h2>
     <form action='' method='get'>
-        <input type='text' name='gametitle'>
+        <input type='text' name='gametitle' placeholder='Game Title'>
         <button type='submit' value='Search'>Search</button>
     </form>
     <hr>
@@ -21,6 +21,10 @@ Search Page
         {% for j in i.platforms %}
             {% include 'comma.html' %}{{ j.platform.name }}
         {% endfor %}
+        <form action='/games/details' method='get'>
+            <input type='text' name='' value='{{ i.slug }}'>
+            <button type='submit' value='Details'>Details</button>
+        </form>
         <hr>
     {% endfor %}
 {% endblock %}

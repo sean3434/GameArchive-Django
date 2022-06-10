@@ -11,5 +11,7 @@ urlpatterns = [
     path('library/finishedplaying/', views.FinishedPlaying.as_view(), name="finished_playing"),
     path('library/wanttoplay/', views.WantToPlay.as_view(), name="want_to_play"),
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
-    path('games/search/', views.Search, name='search')
+    path('games/search/', views.Search, name='search'),
+    path('games/details/', views.Details, name='details'),
+
 ]
