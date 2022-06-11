@@ -8,6 +8,7 @@
         <link rel="stylesheet" href="{% static 'styles/main.css' %}?{% now 'U' %}" />
         <script src="{% static 'scripts/main.js' %}" defer></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
         <script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
         <title>GameArchive - {% block title %}{% endblock %}</title> 
     </head>
@@ -27,8 +28,11 @@
                 <div class="navbar-menu navbar-end">
                     <a class="navbar-item" href="{% url 'game_create' %}">Add A Game</a>
                     <form action='/games/search' method='get'>
-                        <input type='text' name='gametitle' placeholder='Game Title'>
-                        <button type='submit' value='Search'>Search</button>
+                        <div class='searchbar'>
+                            <input type='text' name='gametitle' placeholder='Game Title'>
+                            <button type='submit' value='Search'>Search</button>
+                                <i class='material-icons'>search</i>
+                        </div>
                     </form>
                 </div>
             {% if user.is_authenticated %}

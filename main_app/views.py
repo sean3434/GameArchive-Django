@@ -9,6 +9,8 @@ from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
+from django.contrib.auth.models import User
+from django.db import models
 import requests
 
 from .models import Game
@@ -34,6 +36,19 @@ def Details(request):
     response = requests.get(url)
     data = response.json()
 
+    game_data = Game(
+            title = data['name'],
+            cover_art = data['background_image'],
+            release_date = data['released'],
+            developer = data['developers'][0]['name'],
+            rating = data['metacritic'],
+            platform = 'PC',
+            genre = data['genres'][0]['name'],
+            description = data['description'],
+            add_to_list = 'currently playing',
+            user = request.user
+        )
+    game_data.save()
 
     context = {
         'data' : data
@@ -113,3 +128,4 @@ class Signup(View):
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
+

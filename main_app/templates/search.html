@@ -22,7 +22,7 @@ Search Page
             {% include 'comma.html' %}{{ j.platform.name }}
         {% endfor %}
         <form action='/games/details' method='get'>
-            <input type='text' name='' value='{{ i.slug }}'>
+            <input type='text' name='slug' value='{{ i.slug }}'>
             <button type='submit' value='Details'>Details</button>
         </form>
         <hr>

@@ -28,10 +28,11 @@ Currently Playing
             <h1 class="genre">{{game.genre}}</h1>
         </div>
         <div class="detail__description">
-            <h1 class="description">{{game.description}}</h1>
+            <h1 class="description">{{game.description|striptags}}</h1>
         </div>
         <div class="detail__add_to_list">
             <h1 class="add_to_list">{{game.add_to_list}}</h1>
         </div>
+        <hr>
     {% endfor %}
 {% endblock %}

@@ -13,5 +13,4 @@ urlpatterns = [
     path('accounts/signup/', views.Signup.as_view(), name="signup"),
     path('games/search/', views.Search, name='search'),
     path('games/details/', views.Details, name='details'),
-
 ]
