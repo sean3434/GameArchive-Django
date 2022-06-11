@@ -17,7 +17,7 @@ Search Page
         <img src='{{ i.background_image }}' alt='cover art' height=200px width=200px>
         <div>{{ i.name }}</div>
         <div>Rating: {{ i.metacritic }}</div>
-        <div>Released on {{ i.released }}</div>
+        <div>Released on {{ i.released|slice:"5:"}}-{{i.released|slice:"0:4"}}</div>
         {% for j in i.platforms %}
             {% include 'comma.html' %}{{ j.platform.name }}
         {% endfor %}

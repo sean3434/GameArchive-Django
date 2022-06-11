@@ -26,12 +26,13 @@
                     <a class="navbar-item" href="{% url 'home' %}">Library</a>
                 </div>
                 <div class="navbar-menu navbar-end">
-                    <a class="navbar-item" href="{% url 'game_create' %}">Add A Game</a>
+                    {% comment %} <a class="navbar-item" href="{% url 'game_create' %}">Add A Game</a> {% endcomment %}
                     <form action='/games/search' method='get'>
                         <div class='searchbar'>
-                            <input type='text' name='gametitle' placeholder='Game Title'>
-                            <button type='submit' value='Search'>Search</button>
+                            <input type='text' class='searchbar__input' name='gametitle' placeholder='Game Title'>
+                            <button type='submit' class='searchbar__button' value='Search'>
                                 <i class='material-icons'>search</i>
+                            </button>
                         </div>
                     </form>
                 </div>
