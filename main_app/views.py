@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView, UpdateView
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
@@ -51,10 +51,17 @@ class GameDetail(DetailView):
     model = Game
     template_name = "game_detail.html"
 
+@method_decorator(login_required, name='dispatch')
 class GameUpdate(UpdateView):
     model = Game
     fields = ['title', 'cover_art', 'release_date', 'developer', 'rating', 'platform', 'genre', 'description', 'add_to_list']
     template_name = "game_update.html"
+    success_url = "/library/currentlyplaying/"
+
+@method_decorator(login_required, name='dispatch')
+class GameDelete(DeleteView):
+    model = Game
+    template_name = "game_delete_confirmation.html"
     success_url = "/library/currentlyplaying/"
 
 @method_decorator(login_required, name='dispatch')

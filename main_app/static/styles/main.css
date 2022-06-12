@@ -69,7 +69,8 @@ p {
 
 .searchbar__button {
     width: 40px;
-    background-color: #4e94ca;
+    background-color: #3b97dd;
+    /* background-color: #4e94ca; */
     color: #ffffff;
     outline: none;
     border: none;
@@ -147,6 +148,12 @@ p {
     max-width: 15vw;
 }
 
+.detail__editdelete {
+    text-align: center;
+    min-width: 15vw;
+    max-width: 15vw;
+}
+
 .titleee {
     font-size: 1.5em;
     color: #78bdf2;
@@ -170,4 +177,45 @@ p {
 
 .button {
     margin-top: 18px;
+}
+
+.editdelete {
+    color: #ffffff;
+    font-size: 2em !important;
+    text-align: center;
+    justify-content: center;
+}
+
+.singlesublibcontainer>a {
+    display: contents;
+}
+
+.logout {
+    margin-left: 10px;
+}
+
+.addbox {
+    align-items: center;
+    text-align: center;
+}
+
+.check {
+    font-size: 1em !important;
+    color: green;
+}
+
+.thumb {
+    margin-right: 3px;
+}
+
+.controller {
+    margin-right: 3px;
+}
+
+.happy {
+    margin-right: 3px;
+}
+
+.wanna {
+    margin-right: 3px;
 }

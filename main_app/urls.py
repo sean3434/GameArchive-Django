@@ -7,6 +7,7 @@ urlpatterns = [
     path('games/new/', views.GameCreate.as_view(), name="game_create"),
     path('games/<int:pk>/', views.GameDetail.as_view(), name="game_detail"),
     path('games/<int:pk>/update',views.GameUpdate.as_view(), name="game_update"),
+    path('games/<int:pk>/delete',views.GameDelete.as_view(), name="game_delete"),
     path('library/stoppedplaying/', views.StoppedPlaying.as_view(), name="stopped_playing"),
     path('library/currentlyplaying/', views.CurrentlyPlaying.as_view(), name="currently_playing"),
     path('library/finishedplaying/', views.FinishedPlaying.as_view(), name="finished_playing"),

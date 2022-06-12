@@ -35,23 +35,23 @@
             </div>
                 <div class="navbar-menu navbar-end">
                     <div class="navbar-item is-hoverable">
-                        Library
+                        Library<i class='material-icons'>arrow_drop_down</i>
 
                         <div class="navbar-dropdown">
                             <a class="navbar-item" href='/library/stoppedplaying'>
-                                Stopped Playing
+                                <i class='material-icons thumb'>mood_bad</i>Stopped Playing
                             </a>
                             <hr class="dropdown-divider">
                             <a class="navbar-item" href='/library/currentlyplaying'>
-                                Currently Playing
+                                <i class='material-icons controller'>sports_esports</i>Currently Playing
                             </a>
                             <hr class="dropdown-divider">
                             <a class="navbar-item" href='/library/finishedplaying'>
-                                Finished Playing
+                                <i class='material-icons happy'>sentiment_very_satisfied</i>Finished Playing
                             </a>
                             <hr class="dropdown-divider">
                             <a class="navbar-item" href='/library/wanttoplay'>
-                                Want To Play
+                                <i class='material-icons wanna'>library_add</i> Want To Play
                             </a>
                         </div>
                     </div>
@@ -59,11 +59,11 @@
             {% if user.is_authenticated %}
                 <div class="navbar-menu navbar-end">
                     <span class="navbar-item">Hey, {{user.username}}</span>
-                    <a class="navbar-item" href="{% url 'logout' %}">Logout</a>
+                    <a class="navbar-item" href="{% url 'logout' %}">Logout<i class='material-icons logout'>logout</i></a>
                 </div>
                 {% else %}
                     <div class="navbar-menu navbar-end">
-                        <a class="navbar-item" href="{% url 'login' %}">Log In</a>
+                        <a class="navbar-item" href="{% url 'login' %}"><i class='material-icons thumb'>login</i>Log In</a>
                             <a class="navbar-item" href="{% url 'signup' %}">Sign Up</a>
                     </div>
                 {% endif %}

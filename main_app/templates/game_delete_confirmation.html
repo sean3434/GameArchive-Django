@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{game.title}} Delete Confirmation Page
+{% endblock %}
+
+{% block content %}
+<h1 class='uniformtextdet'>Are you sure you want to <strong class='uniformtextdet' >Delete</strong> <strong class='searchtitle'>{{game.title}}</strong class='uniformtextdet'>?</h1>
+<form method="post">
+    {% csrf_token %}
+    <div class="buttons">
+        <input class="button is-danger px-4" type="submit" value="Confirm" />
+        <a class="button is-primary" href="{% url 'currently_playing' %}">Cancel</a>
+    </div>
+</form>{% endblock %}
