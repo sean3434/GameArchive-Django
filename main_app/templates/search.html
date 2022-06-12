@@ -6,25 +6,64 @@ Search Page
 
 {% block content %}
 
-<h2>Search Game</h2>
+{% comment %} <h2>Search Game</h2>
     <form action='' method='get'>
         <input type='text' name='gametitle' placeholder='Game Title'>
         <button type='submit' value='Search'>Search</button>
     </form>
-    <hr>
-
+    <hr> {% endcomment %}
+    <br/>
     {% for i in results %}
-        <img src='{{ i.background_image }}' alt='cover art' height=200px width=200px>
-        <div>{{ i.name }}</div>
-        <div>Rating: {{ i.metacritic }}</div>
-        <div>Released on {{ i.released|slice:"5:"}}-{{i.released|slice:"0:4"}}</div>
-        {% for j in i.platforms %}
-            {% include 'comma.html' %}{{ j.platform.name }}
-        {% endfor %}
-        <form action='/games/details' method='get'>
-            <input type='text' name='slug' value='{{ i.slug }}'>
-            <button type='submit' value='Details'>Details</button>
-        </form>
-        <hr>
+        <img class='searchimg' src='{{ i.background_image }}' alt='cover art'>
+        <div class='uniformtext'><strong class='searchtitle'>{{ i.name }}</strong></div>
+        <div class='uniformtext'>Rating: {{ i.metacritic }}</div>
+        <div class='uniformtext'>Release Date: {{ i.released|slice:"5:"}}-{{i.released|slice:"0:4"}}</div>
+        <div class='uniformtext'> Platforms:
+            {% for j in i.platforms %}
+                {% include 'comma.html' %}{{ j.platform.name }}
+            {% endfor %}
+        </div>
+            <div class="dropdown is-hoverable">
+                <div class="dropdown-trigger">
+                    <button class="button" aria-haspopup="true" aria-controls="dropdown-menu3">
+                    <span>+Add Game To Library</span>
+                    <span class="icon is-small">
+                        <i class="fas fa-angle-down" aria-hidden="true"></i>
+                    </span>
+                    </button>
+                </div>
+                <div class="dropdown-menu" id="dropdown-menu3" role="menu">
+                    <div class="dropdown-content">
+                    <div class="dropdown-item">
+                    <form action='/games/details/stop' method='get'>
+                        <input type='hidden' name='slug' value='{{ i.slug }}'>
+                        <button type='submit' value='Stop'><p>Add to <strong>Stopped Playing</strong></p></button>
+                    </form>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <div class="dropdown-item">
+                    <form action='/games/details/current' method='get'>
+                        <input type='hidden' name='slug' value='{{ i.slug }}'>
+                        <button type='submit' value='Current'><p>Add to <strong>Currently Playing</strong></p></button>
+                    </form>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <div class="dropdown-item">
+                    <form action='/games/details/finish' method='get'>
+                        <input type='hidden' name='slug' value='{{ i.slug }}'>
+                        <button type='submit' value='Finish'><p>Add to <strong>Finished Playing</strong></p></button>
+                    </form>
+                    </div>
+                    <hr class="dropdown-divider">
+                    <div class="dropdown-item">
+                    <form action='/games/details/want' method='get'>
+                        <input type='hidden' name='slug' value='{{ i.slug }}'>
+                        <button type='submit' value='Want'><p>Add to <strong>Want To Play</strong></p></button>
+                    </form>
+                    </div>
+                    </div>
+                </div>
+                </div>
+        <hr style='border-top:2px dotted #8c8c8c;'>
     {% endfor %}
 {% endblock %}

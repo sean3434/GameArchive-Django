@@ -5,33 +5,44 @@ Finished Playing
 {% endblock %}
 
 {% block content %}
-    {% for game in games %}
-        <div class="detail__cover_art">
-            <img src="{{game.cover_art}}" alt="{{game.name}}" />
+    <div class='sublibcontainer'>
+        <div class='singlesublibcontainer'>
+            <div class='detail__title'>
+                <h1 class='titleee'>Title</h1>
+            </div>
+            <div class='detail__cover_art'>
+                <h1 class='titleee'>Art</h1>
+            </div>
+            <div class='detail__add_to_list'>
+                <h1 class='titleee'>Status</h1>
+            </div>
+            <div class='detail__release_date'>
+                <h1 class='titleee'>Release Date</h1>
+            </div>
+            <div class='detail__rating'>
+                <h1 class='titleee'>Rating</h1>
+            </div>
         </div>
-        <div class="detail__title">
-            <h1 class="titlee">{{game.title}}</h1>
-        </div>
-        <div class="detail__release_date">
-            <h1 class="release_date">{{game.release_date}}</h1>
-        </div>
-        <div class="detail__developer">
-            <h1 class="developer">{{game.developer}}</h1>
-        </div>
-        <div class="detail__rating">
-            <h1 class="rating">{{game.rating}}</h1>
-        </div>
-        <div class="detail__platform">
-            <h1 class="platform">{{game.platform}}</h1>
-        </div>
-        <div class="detail__genre">
-            <h1 class="genre">{{game.genre}}</h1>
-        </div>
-        <div class="detail__description">
-            <h1 class="description">{{game.description}}</h1>
-        </div>
-        <div class="detail__add_to_list">
-            <h1 class="add_to_list">{{game.add_to_list}}</h1>
-        </div>
-    {% endfor %}
+            <hr style=height:1px;border:none;margin-left:-20vw;margin-right:-20vw;border-color:#4e94ca>
+        {% for game in games %}
+            <div class='singlesublibcontainer'>
+                <div class="detail__title">
+                    <h1 class="titlee">{{game.title}}</h1>
+                </div>
+                <div class="detail__cover_art">
+                    <img class='sublibimg' src="{{game.cover_art}}" alt="{{game.name}}" />
+                </div>
+                <div class="detail__add_to_list">
+                    <h1 class="add_to_list">{{game.add_to_list}}</h1>
+                </div>
+                <div class="detail__release_date">
+                    <h1 class="release_date">{{game.release_date}}</h1>
+                </div>
+                <div class="detail__rating">
+                    <h1 class="rating">{{game.rating}}</h1>
+                </div>
+            </div>
+                <hr style=height:1px;border:none;margin-left:-20vw;margin-right:-20vw;border-color:#4e94ca>
+        {% endfor %}
+    </div>
 {% endblock %}

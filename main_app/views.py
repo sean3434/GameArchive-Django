@@ -2,15 +2,13 @@ from django.shortcuts import render
 from django.views import View
 from django.http import HttpResponse
 from django.views.generic.base import TemplateView
-from django.views.generic.edit import CreateView
+from django.views.generic.edit import CreateView, UpdateView
 from django.views.generic import DetailView
 from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import redirect
 from django.contrib.auth.decorators import login_required
 from django.utils.decorators import method_decorator
-from django.contrib.auth.models import User
-from django.db import models
 import requests
 
 from .models import Game
@@ -29,31 +27,6 @@ def Search(request):
         'results' : results
     }
     return render(request, 'search.html', context)
-
-def Details(request):
-    slug = request.GET.get('slug')
-    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
-    response = requests.get(url)
-    data = response.json()
-
-    game_data = Game(
-            title = data['name'],
-            cover_art = data['background_image'],
-            release_date = data['released'],
-            developer = data['developers'][0]['name'],
-            rating = data['metacritic'],
-            platform = 'PC',
-            genre = data['genres'][0]['name'],
-            description = data['description'],
-            add_to_list = 'currently playing',
-            user = request.user
-        )
-    game_data.save()
-
-    context = {
-        'data' : data
-    }
-    return render(request, 'details.html', context)
 
 class Landing(TemplateView):
     template_name = "landing.html"
@@ -77,6 +50,12 @@ class GameCreate(CreateView):
 class GameDetail(DetailView):
     model = Game
     template_name = "game_detail.html"
+
+class GameUpdate(UpdateView):
+    model = Game
+    fields = ['title', 'cover_art', 'release_date', 'developer', 'rating', 'platform', 'genre', 'description', 'add_to_list']
+    template_name = "game_update.html"
+    success_url = "/library/currentlyplaying/"
 
 @method_decorator(login_required, name='dispatch')
 class FinishedPlaying(TemplateView):
@@ -129,3 +108,102 @@ class Signup(View):
             context = {"form": form}
             return render(request, "registration/signup.html", context)
 
+def Stop(request):
+    slug = request.GET.get('slug')
+    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+    game_data = Game(
+            title = data['name'],
+            cover_art = data['background_image'],
+            release_date = data['released'],
+            developer = data['developers'][0]['name'],
+            rating = data['metacritic'],
+            platform = 'PC',
+            genre = data['genres'][0]['name'],
+            description = data['description'],
+            add_to_list = 'stopped playing',
+            user = request.user
+        )
+    game_data.save()
+
+    context = {
+        'data' : data
+    }
+    return render(request, 'stop.html', context)
+
+def Current(request):
+    slug = request.GET.get('slug')
+    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+    game_data = Game(
+            title = data['name'],
+            cover_art = data['background_image'],
+            release_date = data['released'],
+            developer = data['developers'][0]['name'],
+            rating = data['metacritic'],
+            platform = 'PC',
+            genre = data['genres'][0]['name'],
+            description = data['description'],
+            add_to_list = 'currently playing',
+            user = request.user
+        )
+    game_data.save()
+
+    context = {
+        'data' : data
+    }
+    return render(request, 'current.html', context)
+
+def Finish(request):
+    slug = request.GET.get('slug')
+    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+    game_data = Game(
+            title = data['name'],
+            cover_art = data['background_image'],
+            release_date = data['released'],
+            developer = data['developers'][0]['name'],
+            rating = data['metacritic'],
+            platform = 'PC',
+            genre = data['genres'][0]['name'],
+            description = data['description'],
+            add_to_list = 'finished playing',
+            user = request.user
+        )
+    game_data.save()
+
+    context = {
+        'data' : data
+    }
+    return render(request, 'finish.html', context)
+
+def Want(request):
+    slug = request.GET.get('slug')
+    url = f'https://api.rawg.io/api/games/{slug}?key={API_KEY}'
+    response = requests.get(url)
+    data = response.json()
+
+    game_data = Game(
+            title = data['name'],
+            cover_art = data['background_image'],
+            release_date = data['released'],
+            developer = data['developers'][0]['name'],
+            rating = data['metacritic'],
+            platform = 'PC',
+            genre = data['genres'][0]['name'],
+            description = data['description'],
+            add_to_list = 'want to play',
+            user = request.user
+        )
+    game_data.save()
+
+    context = {
+        'data' : data
+    }
+    return render(request, 'want.html', context)

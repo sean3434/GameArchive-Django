@@ -1,0 +1,19 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{data.name}} Page
+{% endblock %}
+
+{% block content %}
+    <br/>
+    <img class='searchimg' src='{{ data.background_image }}' alt='cover art'>
+    <div class='uniformtext'><strong class='searchtitle'>{{ data.name }}</strong></div>
+    <div class='uniformtext'>Rating: {{ data.metacritic }}</div>
+    <div class='uniformtext'>Released on {{ data.released }}</div>
+    <div class='uniformtext'>
+        {% for i in data.platforms %}
+            {% include 'comma.html' %}{{ i.platform.name }}
+        {% endfor %}
+    </div>
+    <h1 class='uniformtextdet' ><strong class='uniformtextdet' >{{data.name}}</strong> successfully added to <strong class='uniformtextdet'>Want To Play</strong>
+{% endblock %}

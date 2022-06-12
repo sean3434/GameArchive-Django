@@ -1,6 +1,6 @@
 {% load static %}
 <!DOCTYPE html>
-<html lang="en">
+<html class="has-navbar-fixed-top" lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
@@ -13,19 +13,10 @@
         <title>GameArchive - {% block title %}{% endblock %}</title> 
     </head>
     <body >
-        <nav class="navbar is-black" role="navigation" aria-label="main navigation">
+        <nav class="navbar is-black has-shadow is-fixed-top" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
                 <a class="navbar-item" href="/">GameResume</a>
-                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-                <div class="navbar-menu navbar-end">
-                    <a class="navbar-item" href="{% url 'home' %}">Library</a>
-                </div>
-                <div class="navbar-menu navbar-end">
+                <div class="navbar-brand">
                     {% comment %} <a class="navbar-item" href="{% url 'game_create' %}">Add A Game</a> {% endcomment %}
                     <form action='/games/search' method='get'>
                         <div class='searchbar'>
@@ -35,6 +26,35 @@
                             </button>
                         </div>
                     </form>
+                </div>
+                <a role="button" class="navbar-burger" aria-label="menu" aria-expanded="false">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                </a>
+            </div>
+                <div class="navbar-menu navbar-end">
+                    <div class="navbar-item is-hoverable">
+                        Library
+
+                        <div class="navbar-dropdown">
+                            <a class="navbar-item" href='/library/stoppedplaying'>
+                                Stopped Playing
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="navbar-item" href='/library/currentlyplaying'>
+                                Currently Playing
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="navbar-item" href='/library/finishedplaying'>
+                                Finished Playing
+                            </a>
+                            <hr class="dropdown-divider">
+                            <a class="navbar-item" href='/library/wanttoplay'>
+                                Want To Play
+                            </a>
+                        </div>
+                    </div>
                 </div>
             {% if user.is_authenticated %}
                 <div class="navbar-menu navbar-end">
