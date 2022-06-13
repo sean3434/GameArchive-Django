@@ -5,9 +5,23 @@ Update {{game.title}} Page
 {% endblock %}
 
 {% block content %}
-<h1>Update {{game.title}}</h1>
-
-<form action="" method="post">
-    {% csrf_token %} {{form.as_p}} <input type="submit" value="Submit" />
-</form>
+<br/>
+<br/>
+<br/>
+<br/>
+<div class='contain'>
+    <div class='logbox'>
+        <h1 class='updateeee'>Update <br/><strong class='searchtitle logg'>{{game.title}}</strong></h1>
+        <form action="" method="post">
+            {% csrf_token %}
+            <br/>
+            <h2 class='updatetextt'>
+            {{form.as_p}} 
+            <input class="button is-info editsubmit" type="submit" value="Submit" />
+            </h2>
+        </form>
+        <br/>
+        <br/>
+    </div>
+</div>
 {% endblock %}

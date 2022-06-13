@@ -22,9 +22,13 @@ Finished Playing
             <div class='detail__rating'>
                 <h1 class='titleee'>Rating</h1>
             </div>
+            <div class='detail__editdelete'>
+                <h1 class='titleee'>Edit/Delete</h1>
+            </div>
         </div>
             <hr style=height:1px;border:none;margin-left:-20vw;margin-right:-20vw;border-color:#4e94ca>
         {% for game in games %}
+        <a href="{% url 'game_detail' game.pk %}">
             <div class='singlesublibcontainer'>
                 <div class="detail__title">
                     <h1 class="titlee">{{game.title}}</h1>
@@ -41,7 +45,16 @@ Finished Playing
                 <div class="detail__rating">
                     <h1 class="rating">{{game.rating}}</h1>
                 </div>
+                <div class='detail__editdelete'>
+                    <a class='io'href="{% url 'game_update' game.pk %}">
+                        <i class="material-icons editdelete">edit_note</i>
+                    </a>
+                    <a href="{% url 'game_delete' game.pk %}">
+                        <i class="material-icons editdelete">delete</i>
+                    </a>
+                </div>
             </div>
+        </a>
                 <hr style=height:1px;border:none;margin-left:-20vw;margin-right:-20vw;border-color:#4e94ca>
         {% endfor %}
     </div>

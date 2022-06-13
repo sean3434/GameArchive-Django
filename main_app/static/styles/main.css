@@ -116,18 +116,18 @@ p {
 
 .sublibimg {
     /* border: solid #1c5784 3px; */
-    border-radius: 15px;
+    border-radius: 7px;
     min-width: 10vw;
     max-width: 10vw;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.44) 0px 10px 20px, rgba(0, 0, 0, 0.48) 0px 6px 6px;
 }
 
 .searchimg {
     /* border: solid #1c5784 3px; */
-    border-radius: 15px;
+    border-radius: 7px;
     min-width: 25vw;
     max-width: 25vw;
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 10px 20px, rgba(0, 0, 0, 0.28) 0px 6px 6px;
+    box-shadow: rgba(0, 0, 0, 0.44) 0px 10px 20px, rgba(0, 0, 0, 0.48) 0px 6px 6px;
 }
 
 .detail__add_to_list {
@@ -218,4 +218,46 @@ p {
 
 .wanna {
     margin-right: 3px;
+}
+
+.person {
+    margin-left: 3px;
+}
+
+.field {
+    max-width: 50%;
+    align-items: center;
+    text-align: center;
+    margin: auto;
+}
+
+.logg {
+    text-align: center;
+    font-size: 40px;
+    margin-bottom: 15px;
+}
+
+.logbox {
+    border: solid #3b97dd 3px;
+    border-radius: 15px;
+    margin: 0px auto 0px auto;
+    padding: 30px 0px 0px 0px;
+    max-width: 50vw;
+    background-color: #3b97dd16;
+    box-shadow: rgba(0, 0, 0, 0.44) 0px 10px 20px, rgba(0, 0, 0, 0.48) 0px 6px 6px;
+}
+.logmessage {
+    text-align: center;
+}
+.updateeee {
+    text-align: center;
+    font-size: 40px;
+}
+
+.updatetextt {
+    margin-left: 20px;
+}
+
+.editsubmit {
+    padding: 0px 15px 0px 15px !important;
 }

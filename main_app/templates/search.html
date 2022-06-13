@@ -23,6 +23,7 @@ Search Page
                 {% include 'comma.html' %}{{ j.platform.name }}
             {% endfor %}
         </div>
+            {% if user.is_authenticated %}
             <div class="dropdown is-hoverable">
                 <div class="dropdown-trigger">
                     <button class="button is-info is-rounded" aria-haspopup="true" aria-controls="dropdown-menu3">
@@ -64,6 +65,9 @@ Search Page
                     </div>
                 </div>
                 </div>
+                {% else %}
+                <a class='button is-info is-rounded' href='/accounts/login'>+ Add Game To Library</a>
+                {% endif %}
         <hr style='border-top:2px dotted #8c8c8c;'>
     {% endfor %}
 {% endblock %}

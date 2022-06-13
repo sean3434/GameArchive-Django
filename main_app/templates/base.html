@@ -6,6 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <link rel="stylesheet" href="{% static 'styles/main.css' %}?{% now 'U' %}" />
+        <script src="https://kit.fontawesome.com/5d5bccdf8a.js" crossorigin="anonymous"></script>
         <script src="{% static 'scripts/main.js' %}" defer></script>
         <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.2/css/bulma.min.css">
         <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
@@ -58,7 +59,7 @@
                 </div>
             {% if user.is_authenticated %}
                 <div class="navbar-menu navbar-end">
-                    <span class="navbar-item">Hey, {{user.username}}</span>
+                    <span class="navbar-item">{{user.username}}<i class='material-icons person'>person</i></span>
                     <a class="navbar-item" href="{% url 'logout' %}">Logout<i class='material-icons logout'>logout</i></a>
                 </div>
                 {% else %}
