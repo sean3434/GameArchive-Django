@@ -35,6 +35,7 @@ class Landing(TemplateView):
 class Home(TemplateView):
     template_name = "home.html"
 
+
 @method_decorator(login_required, name='dispatch')
 class GameCreate(CreateView):
     model = Game
@@ -110,7 +111,7 @@ class Signup(View):
         if form.is_valid():
             user = form.save()
             login(request, user)
-            return redirect("home")
+            return redirect("library/currentlyplaying")
         else:
             context = {"form": form}
             return render(request, "registration/signup.html", context)
